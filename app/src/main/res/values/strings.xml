@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">LoginWithAnimation</string>
+    <string name="signup">Daftar</string>
+    <string name="login">Masuk</string>
+    <string name="message_welcome_page">Mari coba aplikasi ini dan upload kegiatanmu !</string>
+    <string name="title_welcome_page">Selamat Datang !</string>
+    <string name="title_signup_page">Lengkapi data dirimu di bawah ini ya</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="message_login_page">Masukkan dulu datamu ya</string>
+    <string name="title_login_page">Mau upload kegiatanmu ?</string>
+    <string name="name">Nama</string>
+    <string name="message_main_page">Selamat Mencoba.</string>
+    <string name="greeting">Halo %1$s,</string>
+    <string name="logout">Keluar</string>
+    <string name="password_error_message">Password must be at least 8 characters</string>
+    <string name="password_hint">Enter your password</string>
+    <string name="maps_id">AIzaSyBfxiEXIWGI0qyaQ9QMKIjSyYdZ_71e70A</string>
+
+
+
+</resources>
