@@ -24,7 +24,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -49,13 +48,6 @@ class MyViewModelTest {
 
     private lateinit var myViewModel: MyViewModel
 
-    @Before
-    fun setUp() {
-        Mockito.`when`(sharedPreferenceHelper.getToken(Constant.TOKEN_KEY)).thenReturn("test_token")
-
-        myViewModel = MyViewModel(storyRepository, sharedPreferenceHelper)
-    }
-
     @Test
     fun `when Get Quote Should Not Null and Return Data`() = runTest {
         val dummyQuote = DataDummy.generateDummyStoryResponse()
@@ -63,7 +55,12 @@ class MyViewModelTest {
         val expectedQuote = MutableLiveData<PagingData<DetailStory>>()
         expectedQuote.value = data
 
-        Mockito.`when`(storyRepository.getStories("test_token")).thenReturn(expectedQuote)
+        myViewModel = MyViewModel(storyRepository, sharedPreferenceHelper)
+
+        Mockito.`when`(myViewModel.getToken()).thenReturn("token")
+
+        Mockito.`when`(storyRepository.getStories(myViewModel.getToken() ?: "")).thenReturn(expectedQuote)
+
 
         val actualQuote: PagingData<DetailStory> = myViewModel.myDataFlow.getOrAwaitValue()
 
@@ -95,7 +92,12 @@ class MyViewModelTest {
         val expectedQuote = MutableLiveData<PagingData<DetailStory>>()
         expectedQuote.value = data
 
-        Mockito.`when`(storyRepository.getStories("test_token")).thenReturn(expectedQuote)
+        myViewModel = MyViewModel(storyRepository, sharedPreferenceHelper)
+
+        Mockito.`when`(myViewModel.getToken()).thenReturn("token")
+
+        Mockito.`when`(storyRepository.getStories(myViewModel.getToken() ?: "")).thenReturn(expectedQuote)
+
 
         val actualQuote: PagingData<DetailStory> = myViewModel.myDataFlow.getOrAwaitValue()
 

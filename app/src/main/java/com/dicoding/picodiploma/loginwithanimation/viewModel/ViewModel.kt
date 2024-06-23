@@ -61,6 +61,7 @@ class MyViewModel(
 
     val myDataFlow: LiveData<PagingData<DetailStory>> = repository.getStories(getToken() ?: "").cachedIn(viewModelScope)
 
+
     fun getToken(): String? {
         return pref.getToken(Constant.TOKEN_KEY)
     }
