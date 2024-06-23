@@ -55,11 +55,15 @@ class MyViewModelTest {
         val expectedQuote = MutableLiveData<PagingData<DetailStory>>()
         expectedQuote.value = data
 
+//        myViewModel = MyViewModel(storyRepository, sharedPreferenceHelper)
+//
+//        Mockito.`when`(myViewModel.getToken()).thenReturn("token")
+//
+//        Mockito.`when`(storyRepository.getStories(myViewModel.getToken() ?: "")).thenReturn(expectedQuote)
+
+        Mockito.`when`(sharedPreferenceHelper.getToken(Constant.TOKEN_KEY)).thenReturn("token")
+        Mockito.`when`(storyRepository.getStories("token")).thenReturn(expectedQuote)
         myViewModel = MyViewModel(storyRepository, sharedPreferenceHelper)
-
-        Mockito.`when`(myViewModel.getToken()).thenReturn("token")
-
-        Mockito.`when`(storyRepository.getStories(myViewModel.getToken() ?: "")).thenReturn(expectedQuote)
 
 
         val actualQuote: PagingData<DetailStory> = myViewModel.myDataFlow.getOrAwaitValue()
@@ -92,11 +96,15 @@ class MyViewModelTest {
         val expectedQuote = MutableLiveData<PagingData<DetailStory>>()
         expectedQuote.value = data
 
+//        myViewModel = MyViewModel(storyRepository, sharedPreferenceHelper)
+//
+//        Mockito.`when`(myViewModel.getToken()).thenReturn("token")
+//
+//        Mockito.`when`(storyRepository.getStories(myViewModel.getToken() ?: "")).thenReturn(expectedQuote)
+
+        Mockito.`when`(sharedPreferenceHelper.getToken(Constant.TOKEN_KEY)).thenReturn("token")
+        Mockito.`when`(storyRepository.getStories("token")).thenReturn(expectedQuote)
         myViewModel = MyViewModel(storyRepository, sharedPreferenceHelper)
-
-        Mockito.`when`(myViewModel.getToken()).thenReturn("token")
-
-        Mockito.`when`(storyRepository.getStories(myViewModel.getToken() ?: "")).thenReturn(expectedQuote)
 
 
         val actualQuote: PagingData<DetailStory> = myViewModel.myDataFlow.getOrAwaitValue()
